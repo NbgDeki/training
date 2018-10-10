@@ -6,7 +6,7 @@
                     <span class="nav-title">Dnevnik Treninga</span>
                 </router-link>
                 <a href="" class="btn-floating btn-large halfway-fab amber darken-4">
-                    <router-link :to="{name: 'AddTraining'}">
+                    <router-link :to="{name: 'AddWorkout'}">
                         <i class="material-icons">add</i>
                     </router-link>
                 </a>
