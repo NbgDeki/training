@@ -1,17 +1,18 @@
 <template>
-    <div class="add-training container">
+    <div class="add-workout container">
         <h2 class="center-align black-text">Dodaj Novi Trening</h2>
-        <form @submit.prevent="AddTraining">
+        <form @submit.prevent="addWorkout">
             <div class="field title">
                 <label for="title">Naziv Treninga:</label>
                 <input type="text" name="title" v-model="title">
             </div>
             <div class="field add-exercise">
                 <label for="add-exercise">Dodaj vezbu:</label>
-                <input type="text" name="add-exercise">
+                <input @keydown.tab.prevent="addExe" v-model="another" type="text" name="add-exercise">
             </div>
             <div class="field center-align">
-                <button class="btn amber darken-4">Dodaj Trening:</button>
+                <p v-if="feedback" class="red-text center"> {{feedback}} </p>
+                <button class="btn amber darken-4">Dodaj Trening</button>
             </div>
         </form>
     </div>
@@ -22,19 +23,31 @@ export default {
     name: 'AddTraining',
     data(){
         return{
-            title: null
+            title: null,
+            another: null,
+            exercises: [],
+            feedback: null
         }
     },
     methods:{
-        AddTraining(){
-            console.log(this.title)
+        addWorkout(){
+            console.log(this.title, this.exercises)
+        },
+        addExe(){
+           if(this.another){
+               this.exercises.push(this.another)
+               this.another = null
+               this.feedback = null
+           }else{
+               this.feedback = 'Morate uneti naziv vezbe'
+           }
         }
     }
 }
 </script>
 
 <style lang="scss">
-    .add-training{
+    .add-workout{
         margin-top: 60px;
         padding: 20px;
         max-width: 500px;

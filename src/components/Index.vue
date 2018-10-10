@@ -1,11 +1,11 @@
 <template>
   <div class="index container">
-    <div class="card" v-for="training in trainings" :key="training.id">
+    <div class="card" v-for="workout in workouts" :key="workout.id">
       <div class="card-content">
-        <i class="material-icons delete" @click="deleteTraining(training.id)">delete</i>
-        <h2 class="black-text"> {{training.title}} </h2>
+        <i class="material-icons delete" @click="deleteWorkout(workout.id)">delete</i>
+        <h2 class="black-text"> {{workout.title}} </h2>
         <ul class="exercises">
-          <li v-for="(exercise, index) in training.exercises" :key="index">
+          <li v-for="(exercise, index) in workout.exercises" :key="index">
             <span class="chip"> {{exercise}} </span>
           </li>
         </ul>
@@ -22,15 +22,15 @@ export default {
   name: 'Index',
   data () {
     return {
-      trainings:[]
+      workouts: []
     }
   },
   methods:{
     // brisanje treninga
-    deleteTraining(id){
+    deleteWorkout(id){
       db.collection('exercises').doc(id).delete().then(()=>{
-        this.trainings = this.trainings.filter((training)=>{
-          return training.id != id
+        this.workouts = this.workouts.filter((workout)=>{
+          return workout.id != id
         })
       })  
     }
@@ -39,9 +39,9 @@ export default {
     // uzimanje podataka iz firestore-a
     db.collection('exercises').get().then(snapshot=>{
       snapshot.forEach(doc=>{
-        let training = doc.data()
-        training.id = doc.id
-        this.trainings.push(training)
+        let workout = doc.data()
+        workout.id = doc.id
+        this.workouts.push(workout)
       })
     })
   }
