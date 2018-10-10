@@ -2,6 +2,7 @@
   <div class="index container">
     <div class="card" v-for="training in trainings" :key="training.id">
       <div class="card-content">
+        <i class="material-icons delete" @click="deleteTraining(training.id)">delete</i>
         <h2 class="blue-text"> {{training.title}} </h2>
         <ul class="exercises">
           <li v-for="(exercise, index) in training.exercises" :key="index">
@@ -19,9 +20,17 @@ export default {
   data () {
     return {
       trainings:[
-        {title: 'Grudi', slug: 'grudi', exercises: ['Ravni bench', 'Kosi bench', 'Propadanja'], id: '1'},
-        {title: 'Ledja', slug: 'ledja', exercises: ['Zgibovi', 'Veslanje u pretklonu', 'Mrtvo dizanje'], id: '1'}
+        {title: 'Grudi 9.10.2018', slug: 'grudi-9-10-2018', exercises: ['Ravni bench', 'Kosi bench', 'Propadanja'], id: '1'},
+        {title: 'Ledja 11.10.2018', slug: 'ledja-11-10-2018', exercises: ['Zgibovi', 'Veslanje u pretklonu', 'Mrtvo dizanje'], id: '2'}
       ]
+    }
+  },
+  methods:{
+    // brisanje treninga
+    deleteTraining(id){
+      this.trainings = this.trainings.filter((training)=>{
+        return training.id != id
+      })
     }
   }
 }
@@ -40,6 +49,14 @@ export default {
     }
     .exercises{
       margin: 30px auto;
+    }
+    .delete{
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      cursor: pointer;
+      color: #aaa;
+      font-size: 1.4em;
     }
   }
 </style>
