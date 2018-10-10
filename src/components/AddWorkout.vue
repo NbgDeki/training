@@ -6,6 +6,10 @@
                 <label for="title">Naziv Treninga:</label>
                 <input type="text" name="title" v-model="title">
             </div>
+            <div v-for="(exercise, index) in exercises" :key="index">
+                <label for="exercise">Vezba:</label>
+                <input type="text" name="exercise" v-model="exercises[index]">
+            </div>
             <div class="field add-exercise">
                 <label for="add-exercise">Dodaj vezbu:</label>
                 <input @keydown.tab.prevent="addExe" v-model="another" type="text" name="add-exercise">
@@ -19,6 +23,10 @@
 </template>
 
 <script>
+
+import db from '../firebase/init.js'
+import slugify from 'slugify'
+
 export default {
     name: 'AddTraining',
     data(){
@@ -26,12 +34,32 @@ export default {
             title: null,
             another: null,
             exercises: [],
-            feedback: null
+            feedback: null,
+            slug: null
         }
     },
     methods:{
         addWorkout(){
-            console.log(this.title, this.exercises)
+            if(this.title){
+                this.feedback = null
+                // pravljenje slug-a
+                this.slug = slugify(this.title,{
+                    replacement: '-',
+                    remove: /[$*_+~.()'"!\-:@]/g,
+                    lower: true
+                })
+                db.collection('exercises').add({
+                    title: this.title,
+                    exercises: this.exercises,
+                    slug: this.slug
+                }).then(()=>{
+                   this.$router.push({name: 'Index'}) 
+                }).catch((err)=>{
+                    console.log(err)
+                })   
+            }else{
+                this.feedback = 'Morate uneti naziv treninga'
+            }
         },
         addExe(){
            if(this.another){
