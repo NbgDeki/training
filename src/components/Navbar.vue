@@ -1,11 +1,11 @@
 <template>
     <div class="navbar">
-        <nav class="nav-extended blue lighten-1">
+        <nav class="nav-extended black">
             <div class="nav-content">
                 <router-link to="">
                     <span class="nav-title">Dnevnik Treninga</span>
                 </router-link>
-                <a href="" class="btn-floating btn-large halfway-fab blue darken-4">
+                <a href="" class="btn-floating btn-large halfway-fab amber darken-4">
                     <router-link to="">
                         <i class="material-icons">add</i>
                     </router-link>
