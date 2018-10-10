@@ -3,7 +3,7 @@
         <nav class="nav-extended blue lighten-1">
             <div class="nav-content">
                 <router-link to="">
-                    <span class="nav-title">Training Diary</span>
+                    <span class="nav-title">Dnevnik Treninga</span>
                 </router-link>
                 <a href="" class="btn-floating btn-large halfway-fab blue darken-4">
                     <router-link to="">
