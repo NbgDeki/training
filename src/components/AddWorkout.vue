@@ -6,9 +6,10 @@
                 <label for="title">Naziv Treninga:</label>
                 <input type="text" name="title" v-model="title">
             </div>
-            <div v-for="(exercise, index) in exercises" :key="index">
+            <div v-for="(exercise, index) in exercises" :key="index" class="field">
                 <label for="exercise">Vezba:</label>
                 <input type="text" name="exercise" v-model="exercises[index]">
+                <i class="material-icons delete" @click="deleteExe(exercise)">delete</i>
             </div>
             <div class="field add-exercise">
                 <label for="add-exercise">Dodaj vezbu:</label>
@@ -69,6 +70,11 @@ export default {
            }else{
                this.feedback = 'Morate uneti naziv vezbe'
            }
+        },
+        deleteExe(exercise){
+            this.exercises = this.exercises.filter((exe)=>{
+                return exe != exercise
+            })
         }
     }
 }
@@ -85,12 +91,20 @@ export default {
         }
         .field{
             margin: 20px auto;
+            position: relative;
         }
         input{
             &:focus{
                 border-bottom: 1px solid #ff6f00 !important;
                 box-shadow: 0 1px 0 0 #ff6f00 !important;
             }
+        }
+        .delete{
+            position: absolute;
+            right: 0;
+            bottom: 16px;
+            color: #aaa;
+            font-size: 1.4em;
         }
     }
 </style>
