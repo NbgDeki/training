@@ -26,6 +26,7 @@
 <script>
 
 import db from '../firebase/init.js'
+import slugify from 'slugify'
 
 export default {
     name: 'EditWorkout',
@@ -38,7 +39,26 @@ export default {
     },
     methods:{
         editWorkout(){
-            console.log(this.workout.title, this.workout.exercises)
+            if(this.workout.title){
+                this.feedback = null
+                // pravljenje slug-a
+                this.workout.slug = slugify(this.workout.title,{
+                    replacement: '-',
+                    remove: /[$*_+~.()'"!\-:@]/g,
+                    lower: true
+                })
+                db.collection('exercises').doc(this.workout.id).update({
+                    title: this.workout.title,
+                    exercises: this.workout.exercises,
+                    slug: this.workout.slug
+                }).then(()=>{
+                   this.$router.push({name: 'Index'}) 
+                }).catch((err)=>{
+                    console.log(err)
+                })   
+            }else{
+                this.feedback = 'Morate uneti naziv treninga'
+            }
         },
         addExe(){
            if(this.another){
