@@ -29,7 +29,7 @@ import db from '../firebase/init.js'
 import slugify from 'slugify'
 
 export default {
-    name: 'AddTraining',
+    name: 'AddWorkout',
     data(){
         return{
             title: null,
