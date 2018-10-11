@@ -107,10 +107,11 @@ export default {
             }
         }
         .delete{
-            position: absolute;
+            // position: absolute;
             right: 0;
             bottom: 16px;
             color: #aaa;
+            // cursor: pointer;
             font-size: 1.4em;
         }
     }

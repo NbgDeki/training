@@ -37,7 +37,7 @@ export default {
         this.workouts = this.workouts.filter((workout)=>{
           return workout.id != id
         })
-      })  
+      })
     }
   },
   created(){
