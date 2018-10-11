@@ -42,7 +42,7 @@ export default {
   },
   created(){
     // uzimanje podataka iz firestore-a
-    db.collection('exercises').get().then(snapshot=>{
+    db.collection('exercises').orderBy('title', 'asc').get().then(snapshot=>{
       snapshot.forEach(doc=>{
         let workout = doc.data()
         workout.id = doc.id
