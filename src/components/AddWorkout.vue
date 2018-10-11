@@ -12,7 +12,7 @@
                 <i class="material-icons delete" @click="deleteExe(exercise)">delete</i>
             </div>
             <div class="field add-exercise">
-                <label for="add-exercise">Dodaj vezbu:</label>
+                <label for="add-exercise">Dodaj vezbu (pritiskom na TAB):</label>
                 <input @keydown.tab.prevent="addExe" v-model="another" type="text" name="add-exercise">
             </div>
             <div class="field center-align">
