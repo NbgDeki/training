@@ -1,5 +1,6 @@
 @media #{$small-and-down} {
     .index{
         grid-template-columns: 1fr !important;
+        margin-top: 120px !important;
     }
   }
