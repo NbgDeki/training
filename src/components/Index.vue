@@ -63,7 +63,6 @@ export default {
       font-size: 1.8em;
       text-align: center;
       margin-top: 0;
-      // font-weight: 700;
     }
     .exercises{
       margin: 30px auto;

@@ -3,7 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Materialize from 'materialize-css'
+import 'materialize-css/dist/css/materialize.css'
+import './css/main.scss'
 
+Vue.use(Materialize)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
