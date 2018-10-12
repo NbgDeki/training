@@ -27,11 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-    .navbar{
-        nav{
-            padding: 0 20px;
-        }
-    }
+
 </style>
 
 

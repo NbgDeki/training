@@ -54,31 +54,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .index{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
-    margin-top: 60px;
-    h2{
-      font-size: 1.8em;
-      text-align: center;
-      margin-top: 0;
-    }
-    .exercises{
-      margin: 30px auto;
-    }
-    .delete{
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      cursor: pointer;
-      color: #aaa;
-      font-size: 1.4em;
-    }
-    .chip{
-      height: auto;
-      line-height: 2em;
-    }
-  }
+
 </style>
 

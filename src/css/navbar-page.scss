@@ -1,6 +1,11 @@
-@media #{$small-and-down} {
-    .add{
-        position: absolute;
-        top: 20%;
+.navbar{
+    nav{
+        padding: 0 20px;
     }
-  }
+    .add{
+        @media #{$small-and-down} {
+            position: absolute;
+            top: 20%;
+      }
+    }
+}
